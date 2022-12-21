@@ -13,7 +13,5 @@ vector2i fromSFVec(sf::Vector2i v);
 vector2fl fromB2dVec(b2Vec2 v);
 b2Vec2 toB2dVec(vector2fl v);
 
-float degToRad(float degrees);
-float radToDeg(float radians);
 
 #endif // COMMON_H

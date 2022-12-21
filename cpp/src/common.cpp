@@ -25,12 +25,3 @@ b2Vec2 toB2dVec(vector2fl v)
 {
     return b2Vec2(v.x, v.y);
 }
-
-float degToRad(float degrees)
-{
-    return degrees * ((2 * M_PI) / 360);
-}
-float radToDeg(float radians)
-{
-    return radians * (360 / (2 * M_PI));
-}
