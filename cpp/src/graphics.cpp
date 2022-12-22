@@ -54,4 +54,15 @@ void Ship::display(sf::RenderWindow* window)
     rect.setRotation(-sf::radians(rotation));
     rect.setFillColor(sf::Color::Red);
     window->draw(rect);
+
+    auto fixtures = body->GetFixtureList(); 
+    auto shape = fixtures[1].GetShape();
+    auto triangleShape = static_cast<b2PolygonShape*>(shape);
+    body->GetTransform();
+    for (int i=0; i<triangleShape->m_count; i++)
+    {
+        auto point = triangleShape->m_vertices[i];
+        // invert y
+        window->draw()
+    }
 }
