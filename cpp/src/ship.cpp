@@ -26,7 +26,7 @@ void Ship::registerPhysics(b2World* world, vector2fl position)
     fixtureDef.friction = 0.3;
 
     body->CreateFixture(&fixtureDef);
-    body->SetAngularDamping(0.01);
+    body->SetAngularDamping(5);
 }
 
 vector2fl Ship::getPos()
@@ -41,12 +41,17 @@ void Ship::iterate()
 void Ship::handleInput()
 {
     float turnAmount = getFilteredLeftStickVector().x;
-    body->ApplyTorque(-turnAmount*10, true);
+
+    //cout << body->GetAngularVelocity() << endl;
+    body->ApplyTorque(-turnAmount*SHIP_TURN_TORQUE, true);
+    
+    
+    
 
     if (sf::Joystick::isButtonPressed(0, 0))
     {
         float angle = body->GetAngle();
-        vector2fl force = composeVector2fl(angle, 100);
+        vector2fl force = composeVector2fl(angle, SHIP_THRUST_FORCE);
         body->ApplyForceToCenter(toB2dVec(force), true);
     }
 }

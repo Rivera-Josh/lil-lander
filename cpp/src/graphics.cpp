@@ -45,8 +45,8 @@ void display(sf::RenderWindow* window, Ship* ship)
 
 void Ship::display(sf::RenderWindow* window)
 {
-    sf::RectangleShape rect(sf::Vector2f(4, 4));
-    rect.setOrigin(sf::Vector2f(2, 2));
+    sf::RectangleShape rect(sf::Vector2f(8, 8));
+    rect.setOrigin(sf::Vector2f(4, 4));
     vector2fl position = fromB2dVec(body->GetPosition());
     position.y *= -1;
     float rotation = body->GetAngle();

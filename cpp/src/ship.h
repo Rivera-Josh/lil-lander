@@ -4,6 +4,9 @@
 #include "../include/box2d/box2d.h"
 #include "myvectors.h"
 
+const float SHIP_THRUST_FORCE = 10000;
+const float SHIP_TURN_TORQUE = 20000;
+
 class Ship
 {
     b2Body* body;
