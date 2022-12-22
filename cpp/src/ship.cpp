@@ -22,7 +22,6 @@ void Ship::registerPhysics(b2World* world, vector2fl position)
     triangleVerts[2].Set((0), (12));
     b2PolygonShape dynamicTriangle;
     dynamicTriangle.Set(triangleVerts, 3);
-
     
     b2FixtureDef fixtureHeadDef;
     fixtureHeadDef.shape = &dynamicTriangle;
@@ -39,7 +38,6 @@ void Ship::registerPhysics(b2World* world, vector2fl position)
     fixtureBaseDef.friction = 0.3;
 
     body->CreateFixture(&fixtureBaseDef);
-
     body->CreateFixture(&fixtureHeadDef);
     body->SetAngularDamping(5);
 }
