@@ -9,9 +9,10 @@ sf::RenderWindow* setupGraphics(bool fullscreen)
     //     throw runtime_error("Can't load main font");
 
     auto flags =
-        fullscreen ? sf::Style::Close | sf::Style::Fullscreen
-                   : sf::Style::Close | sf::Style::Titlebar;
-    sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(sf::Vector2u(1280, 720), 24), "SFML Start", flags);
+        sf::Style::Close | sf::Style::Titlebar;
+
+    sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(sf::Vector2u(1000,1000),24), "SFML Start", flags);
+    auto mode = sf::VideoMode::getDesktopMode();
     window->setKeyRepeatEnabled(false);
 
     return window;
@@ -31,10 +32,12 @@ void display(sf::RenderWindow* window, Ship* ship)
 
     ship->display(window);
 
-    sf::View view = window->getView();
+    sf::View view = window->getDefaultView();
     vector2fl cameraCenter = ship->getPos();
     cameraCenter.y *= -1;
+    view.zoom(.3);
     view.setCenter(toSFVec(cameraCenter));
+    
     window->setView(view);
 
     window->display();
@@ -42,8 +45,8 @@ void display(sf::RenderWindow* window, Ship* ship)
 
 void Ship::display(sf::RenderWindow* window)
 {
-    sf::RectangleShape rect(sf::Vector2f(2, 2));
-    rect.setOrigin(sf::Vector2f(1, 1));
+    sf::RectangleShape rect(sf::Vector2f(4, 4));
+    rect.setOrigin(sf::Vector2f(2, 2));
     vector2fl position = fromB2dVec(body->GetPosition());
     position.y *= -1;
     float rotation = body->GetAngle();

@@ -18,7 +18,7 @@ void Ship::registerPhysics(b2World* world, vector2fl position)
     body = world->CreateBody(&bodyDef);
 
     b2PolygonShape dynamicBox;
-    dynamicBox.SetAsBox(1.f, 1.f);
+    dynamicBox.SetAsBox(4.f, 4.f);
     
     b2FixtureDef fixtureDef;
     fixtureDef.shape = &dynamicBox;
